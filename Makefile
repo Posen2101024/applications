@@ -14,7 +14,8 @@ DOCK_IMAGE_TAGS ?= latest $(CURRENT_COMMIT_ID)
 $(VENV):
 	@set -euo pipefail; \
 	$(PYTHON) -m venv $(VENV); \
-	$(VENV)/bin/pip install -Uq pip dock-cli; \
+	$(VENV)/bin/pip install -Uq pip; \
+	$(VENV)/bin/pip install -Uq --pre dock-cli; \
 	echo -e "Successfully created a new virtualenv $(VENV) in $$PWD";
 
 PHONY += init
