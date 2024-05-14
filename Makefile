@@ -16,15 +16,11 @@ $(VENV):
 	$(PYTHON) -m venv $(VENV); \
 	$(VENV)/bin/pip install -Uq pip; \
 	$(VENV)/bin/pip install -Uq --pre dock-cli; \
+	$(VENV)/bin/pip list; \
 	echo -e "Successfully created a new virtualenv $(VENV) in $$PWD";
 
 PHONY += init
 init: $(VENV)
-
-PHONY += list
-list: init
-	@set -euo pipefail; \
-	$(VENV)/bin/pip list;
 
 PHONY += clean
 clean:
@@ -56,6 +52,6 @@ push-charts: init
 
 PHONY += clean-charts
 clean-charts:
-	rm --force /tmp/charts/*.tgz
+	@rm --force /tmp/charts/*.tgz
 
 .PHONY: $(PHONY)
