@@ -18,6 +18,7 @@ $(VENV):
 	$(VENV)/bin/pip list; \
 	echo -e "Successfully created a new virtualenv $(VENV) in $$PWD";
 
+.DEFAULT_GOAL: init
 .PHONY: init
 init: $(VENV)
 
